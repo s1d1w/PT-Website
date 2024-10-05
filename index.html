@@ -1,106 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品表格</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
-        img {
-            width: 100px;
-        }
-    </style>
-</head>
-<body>
-    <h1>商品表格</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premier Tower Residents</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Premier Tower Residents</h1>
     <table id="productTable">
-        <tr>
-            <td><img src="product1.jpg" alt="商品1"></td>
-            <td><img src="product2.jpg" alt="商品2"></td>
-            <td><img src="product3.jpg" alt="商品3"></td>
-        </tr>
-        <tr>
-            <td><input type="text" placeholder="输入商品1名称" id="name1"></td>
-            <td><input type="text" placeholder="输入商品2名称" id="name2"></td>
-            <td><input type="text" placeholder="输入商品3名称" id="name3"></td>
-        </tr>
-        <tr>
-            <td><input type="number" placeholder="数量" id="quantity1"></td>
-            <td><input type="number" placeholder="数量" id="quantity2"></td>
-            <td><input type="number" placeholder="数量" id="quantity3"></td>
-        </tr>
+      <tr>
+        <td></td>
+        <td><img src="img/guojiao.jpg" alt="guojiao" /></td>
+        <td><img src="img/maniao.jpg" alt="maniao" /></td>
+        <td><img src="img/tudoufen.jpg" alt="tudoufen" /></td>
+      </tr>
+      <tr>
+        <td>----------用户名----------</td>
+        <td>商品1: 国窖</td>
+        <td>商品2: 马尿</td>
+        <td>商品3: 土豆粉</td>
+      </tr>
     </table>
     <button onclick="addRow()">添加新行</button>
-    <button onclick="saveData()">保存数据</button>
 
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
-    <script>
-        // Firebase 配置
-        var firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        // 初始化 Firebase
-        firebase.initializeApp(firebaseConfig);
-        var database = firebase.database();
-
-        // 添加新行
-        function addRow() {
-            let table = document.getElementById("productTable");
-            let row = table.insertRow();
-            for (let i = 0; i < 3; i++) {
-                let cell = row.insertCell(i);
-                cell.innerHTML = '<input type="text" placeholder="输入名称"><input type="number" placeholder="数量">';
-            }
-        }
-
-        // 保存数据到 Firebase
-        function saveData() {
-            let names = [
-                document.getElementById("name1").value,
-                document.getElementById("name2").value,
-                document.getElementById("name3").value
-            ];
-            let quantities = [
-                document.getElementById("quantity1").value,
-                document.getElementById("quantity2").value,
-                document.getElementById("quantity3").value
-            ];
-
-            // 存储到 Firebase
-            firebase.database().ref('products').set({
-                product1: { name: names[0], quantity: quantities[0] },
-                product2: { name: names[1], quantity: quantities[1] },
-                product3: { name: names[2], quantity: quantities[2] }
-            });
-        }
-
-        // 读取数据并显示
-        firebase.database().ref('products').on('value', function(snapshot) {
-            let data = snapshot.val();
-            if (data) {
-                document.getElementById("name1").value = data.product1.name;
-                document.getElementById("quantity1").value = data.product1.quantity;
-                document.getElementById("name2").value = data.product2.name;
-                document.getElementById("quantity2").value = data.product2.quantity;
-                document.getElementById("name3").value = data.product3.name;
-                document.getElementById("quantity3").value = data.product3.quantity;
-            }
-        });
-    </script>
-</body>
+    <script type="module" src="scripts.js"></script>
+  </body>
 </html>
