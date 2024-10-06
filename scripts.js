@@ -4,6 +4,7 @@ import {
   ref,
   set,
   onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -117,11 +118,13 @@ function editRow(userName, button) {
 function deleteRow(userName, button) {
   if (confirm(`确定要删除用户 ${userName} 的数据吗？`)) {
     let row = button.parentNode.parentNode;
-    row.remove();
+    row.remove(); // 从前端删除这一行
 
     // 从 Firebase 中删除
-    ref(database, "users/" + userName)
-      .remove()
+    const userRef = ref(database, "users/" + userName);
+
+    // 正确调用 remove() 方法
+    remove(userRef)
       .then(() => {
         alert("数据已删除！");
       })
