@@ -3,3 +3,36 @@
   height: 300px;
   object-fit: cover;
 }
+
+/* 表格容器，允许水平滚动 */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* 支持移动设备上的惯性滚动 */
+  width: 100%; /* 自适应父容器宽度 */
+}
+
+/* 表格的样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* 设置最小宽度以支持多列 */
+}
+
+th,
+td {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* 移动设备上的表格样式 */
+@media (max-width: 600px) {
+  th,
+  td {
+    padding: 6px 8px;
+  }
+}
