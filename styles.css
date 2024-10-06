@@ -4,6 +4,11 @@
   object-fit: cover;
 }
 
+table td:first-child {
+  min-width: 6em; /* 设置最小宽度，6个字宽度 */
+  white-space: nowrap; /* 禁止换行 */
+}
+
 /* 表格容器，允许水平滚动 */
 .table-container {
   overflow-x: auto;
@@ -34,5 +39,10 @@ th {
   th,
   td {
     padding: 6px 8px;
+  }
+
+  table td:first-child {
+    min-width: 6em; /* 设置最小宽度为6个字的宽度 */
+    white-space: nowrap; /* 确保不会换行 */
   }
 }

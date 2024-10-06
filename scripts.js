@@ -31,7 +31,7 @@ let rowAdded = false;
 function addRow() {
   if (!rowAdded) {
     let table = document.getElementById("productTable");
-    let row = table.insertRow();
+    let row = table.insertRow(2);
 
     // 第一个单元格是用户名字
     let nameCell = row.insertCell(0);
